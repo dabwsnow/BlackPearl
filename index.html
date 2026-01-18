@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Обёртки для фона на всю ширину */
+        .header-top-bg {
+            background-color: #1a1f3c; /* Темно-синий как на фото */
+            width: 100%;
+        }
+
+        .header-bottom-bg {
+            background-color: #ffffff; /* Белый фон для нижнего меню */
+            border-bottom: 1px solid #ddd;
+            width: 100%;
+        }
+
+        /* Ограничитель контента 65% */
+        .container {
+            width: 65%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Стили верхней части */
+        .highHeader {
+            padding: 15px 0;
+            color: white;
+        }
+
+        .logo, .userOptions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .companyName h2 {
+            margin: 0;
+            line-height: 1;
+        }
+
+        /* Стили поиска */
+        .search {
+            flex-grow: 1;
+            margin: 0 40px;
+            position: relative;
+        }
+
+        .search input {
+            width: 100%;
+            padding: 10px 15px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        /* Стили нижней части */
+        .lowHeader {
+            padding: 12px 0;
+        }
+
+        .lowHeader a {
+            text-decoration: none;
+            color: #333;
+            font-size: 14px;
+            margin-right: 20px;
+        }
+
+        /* Выпадающее меню */
+        .lang-dropdown { position: relative; }
+        .lang-link { cursor: pointer; color: white; }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: white;
+            min-width: 120px;
+            top: 100%;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            z-index: 100;
+        }
+        .dropdown-content a { color: black; padding: 10px; display: block; margin: 0; }
+        .show { display: block; }
+    </style>
+</head>
+<body>
+
+    <div class="header-top-bg">
+        <div class="container highHeader">
+            <div class="logo">
+                <img src="" alt="Logo" />
+                <div class="companyName">
+                    <h2>Black</h2>
+                    <h2>Pearl</h2>
+                </div>
+            </div>
+
+            <div class="search">
+                <input type="text" placeholder="Enter the name of a product...">
+            </div>
+
+            <div class="userOptions">
+                <div class="lang-dropdown">
+                    <a class="lang-link" onclick="toggleLang()">Language</a>
+                    <div id="langMenu" class="dropdown-content">
+                        <a href="#">Русский</a>
+                        <a href="#">English</a>
+                    </div>
+                </div>
+                <a href="#" style="color: white;">Account</a>
+                <a href="#" style="color: white;">Cart</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-bottom-bg">
+        <div class="container lowHeader">
+            <div class="categories">
+                <a href="">Apple</a>
+                <a href="">Samsung</a>
+                <a href="">Xiaomi</a>
+                <a href="">Others</a>
+            </div>
+            <div class="gadgets">
+                <a href="">Accessories</a>
+                <a href="">Computing</a>
+            </div>
+            <div class="electrical">
+                <a href="">Laptops</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleLang() {
+            document.getElementById("langMenu").classList.toggle("show");
+        }
+        window.onclick = function(event) {
+            if (!event.target.matches('.lang-link')) {
+                var menu = document.getElementById("langMenu");
+                if (menu.classList.contains('show')) menu.classList.remove('show');
+            }
+        }
+    </script>
+</body>
+</html>
