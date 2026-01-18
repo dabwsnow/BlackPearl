@@ -1,0 +1,27 @@
+:root {
+  --color-primary: #1a1f3c;
+  --color-primary-light: #252b4a;
+  --color-text: #444;
+  --color-text-hover: #1a1f3c;
+  --color-border: #eaeaea;
+  --color-white: #ffffff;
+  --color-dropdown-bg: #f8f9fa;
+  
+  --spacing-container: 65%;
+  --spacing-max-width: 1400px;
+  --spacing-gap: 28px;
+  --spacing-gap-small: 24px;
+  
+  --radius-small: 4px;
+  --radius-medium: 8px;
+  
+  --transition: all 0.25s ease;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--color-white);
+  color: var(--color-text);
+  line-height: 1.6;
+}
