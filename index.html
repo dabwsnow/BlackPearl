@@ -3,92 +3,209 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Black Pearl</title>
     <style>
-        body {
+        * {
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
+            box-sizing: border-box;
         }
 
-        /* Обёртки для фона на всю ширину */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
         .header-top-bg {
-            background-color: #1a1f3c; /* Темно-синий как на фото */
+            background: linear-gradient(135deg, #1a1f3c 0%, #252b4a 100%);
             width: 100%;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.12);
         }
 
         .header-bottom-bg {
-            background-color: #ffffff; /* Белый фон для нижнего меню */
-            border-bottom: 1px solid #ddd;
+            background-color: #ffffff;
+            border-bottom: 1px solid #eaeaea;
             width: 100%;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.06);
         }
 
-        /* Ограничитель контента 65% */
         .container {
             width: 65%;
+            max-width: 1400px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        /* Стили верхней части */
         .highHeader {
-            padding: 15px 0;
+            padding: 20px 0;
             color: white;
         }
 
         .logo, .userOptions {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 24px;
         }
 
         .companyName h2 {
-            margin: 0;
-            line-height: 1;
+            line-height: 1.15;
+            font-size: 23px;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 1.5px;
         }
 
-        /* Стили поиска */
         .search {
             flex-grow: 1;
-            margin: 0 40px;
-            position: relative;
+            margin: 0 50px;
         }
 
         .search input {
             width: 100%;
-            padding: 10px 15px;
-            border-radius: 5px;
+            padding: 13px 18px;
+            border-radius: 8px;
             border: none;
+            outline: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            background: rgba(255,255,255,0.95);
         }
 
-        /* Стили нижней части */
-        .lowHeader {
-            padding: 12px 0;
+        .search input:focus {
+            background: #ffffff;
+            box-shadow: 0 0 0 4px rgba(255,255,255,0.25);
+            transform: translateY(-1px);
         }
+
+        .search input::placeholder {
+            color: #999;
+        }
+
+        .lowHeader {
+            padding: 0;
+        }
+
+        .categories, .gadgets, .electrical {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            padding: 18px 0;
+            flex-grow: 1;
+        }
+
+        .categories { justify-content: flex-start; flex: 1.5; }
+        .gadgets {
+            justify-content: center;
+            border-left: 1px solid #eaeaea;
+            border-right: 1px solid #eaeaea;
+            padding-left: 28px;
+            padding-right: 28px;
+            flex: 1;
+        }
+        .electrical { justify-content: flex-end; flex: 0.5; }
 
         .lowHeader a {
             text-decoration: none;
-            color: #333;
+            color: #444;
             font-size: 14px;
-            margin-right: 20px;
+            white-space: nowrap;
+            transition: all 0.25s ease;
+            font-weight: 500;
+            position: relative;
+            padding: 4px 0;
         }
 
-        /* Выпадающее меню */
+        .lowHeader a:hover {
+            color: #1a1f3c;
+            transform: translateY(-1px);
+        }
+
+        .lowHeader a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: #1a1f3c;
+            transition: width 0.25s ease;
+        }
+
+        .lowHeader a:hover::after {
+            width: 100%;
+        }
+
+        .userOptions a {
+            transition: all 0.25s ease;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .userOptions a:hover {
+            opacity: 0.85;
+            transform: translateY(-1px);
+        }
+
         .lang-dropdown { position: relative; }
-        .lang-link { cursor: pointer; color: white; }
+        .lang-link { 
+            cursor: pointer; 
+            color: white; 
+            text-decoration: none; 
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: all 0.25s ease;
+            padding: 6px 10px;
+            border-radius: 4px;
+        }
+
+        .lang-link:hover {
+            background: rgba(255,255,255,0.1);
+        }
+        
         .dropdown-content {
             display: none;
             position: absolute;
             background: white;
-            min-width: 120px;
+            min-width: 145px;
             top: 100%;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            left: 0;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
             z-index: 100;
+            margin-top: 12px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #f0f0f0;
         }
-        .dropdown-content a { color: black; padding: 10px; display: block; margin: 0; }
-        .show { display: block; }
+
+        .dropdown-content a { 
+            color: #444; 
+            padding: 13px 18px; 
+            display: block; 
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-weight: 500;
+            font-size: 14px;
+        }
+        
+        .dropdown-content a:hover { 
+            background: linear-gradient(90deg, #f8f9fa 0%, #ffffff 100%);
+            color: #1a1f3c;
+            padding-left: 22px;
+        }
+        
+        .show { 
+            display: block;
+            animation: fadeIn 0.2s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
     </style>
 </head>
 <body>
@@ -96,23 +213,24 @@
     <div class="header-top-bg">
         <div class="container highHeader">
             <div class="logo">
-                <img src="" alt="Logo" />
                 <div class="companyName">
                     <h2>Black</h2>
                     <h2>Pearl</h2>
                 </div>
             </div>
-
+            
             <div class="search">
                 <input type="text" placeholder="Enter the name of a product...">
             </div>
 
             <div class="userOptions">
                 <div class="lang-dropdown">
-                    <a class="lang-link" onclick="toggleLang()">Language</a>
+                    <a class="lang-link" id="currentLang" onclick="toggleLang()">EN</a>
                     <div id="langMenu" class="dropdown-content">
-                        <a href="#">Русский</a>
-                        <a href="#">English</a>
+                        <a onclick="selectLang('EN')">English</a>
+                        <a onclick="selectLang('RU')">Русский</a>
+                        <a onclick="selectLang('PL')">Polski</a>
+                        <a onclick="selectLang('UA')">Українська</a>
                     </div>
                 </div>
                 <a href="#" style="color: white;">Account</a>
@@ -127,13 +245,19 @@
                 <a href="">Apple</a>
                 <a href="">Samsung</a>
                 <a href="">Xiaomi</a>
+                <a href="">Honor</a>
+                <a href="">Motorola</a>
                 <a href="">Others</a>
             </div>
+            
             <div class="gadgets">
                 <a href="">Accessories</a>
-                <a href="">Computing</a>
+                <a href="">Protection</a>
+                <a href="">Store</a>
             </div>
+            
             <div class="electrical">
+                <a href="">Devices</a>
                 <a href="">Laptops</a>
             </div>
         </div>
@@ -143,6 +267,13 @@
         function toggleLang() {
             document.getElementById("langMenu").classList.toggle("show");
         }
+
+        // Функция смены текста
+        function selectLang(code) {
+            document.getElementById("currentLang").innerText = code;
+            document.getElementById("langMenu").classList.remove("show");
+        }
+
         window.onclick = function(event) {
             if (!event.target.matches('.lang-link')) {
                 var menu = document.getElementById("langMenu");
