@@ -16,6 +16,17 @@ export default function Header() {
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
+  // Добавьте этот эффект внутрь компонента Header
+useEffect(() => {
+  if (mobileMenuOpen) {
+    document.body.style.overflow = 'hidden';
+  } else {
+    document.body.style.overflow = 'unset';
+  }
+  
+  // Чистим при размонтировании компонента
+  return () => { document.body.style.overflow = 'unset'; };
+}, [mobileMenuOpen]);
 
   const icons = {
     menu: (
@@ -115,6 +126,7 @@ export default function Header() {
       </div>
     {mobileMenuOpen && <div className="menu-overlay" onClick={() => setMobileMenuOpen(false)}></div>}
       <div className={`header-bottom ${mobileMenuOpen ? 'mobile-open' : ''}`}>
+        
         <div className="container">
           <div className="nav-section categories">
             {['Apple', 'Samsung', 'Xiaomi', 'Honor', 'Motorola', 'Others'].map(cat => (
