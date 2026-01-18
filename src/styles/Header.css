@@ -296,6 +296,9 @@
     z-index: 1001;
     display: block; /* Вместо flex контейнера */
     padding: 60px 20px 20px; /* Место сверху под кнопку закрытия */
+    overflow-y: auto; /* Разрешаем вертикальную прокрутку */
+    overflow-x: hidden; /* Блокируем горизонтальную */
+    -webkit-overflow-scrolling: touch; /* Плавная прокрутка на iOS */
   }
 
   .header-bottom.mobile-open {

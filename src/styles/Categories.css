@@ -1,0 +1,276 @@
+.categories-page {
+  background: #f8f9fa;
+  min-height: 80vh;
+  padding-bottom: 60px;
+}
+
+/* Секция брендов */
+.brand-section {
+  padding: 40px 0;
+  background: var(--color-white);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.brand-section h2 {
+  font-size: 28px;
+  color: var(--color-primary);
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.brand-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: var(--spacing-gap-small);
+  width: var(--spacing-container);
+  max-width: var(--spacing-max-width);
+  margin: 0 auto;
+}
+
+.brand-card {
+  background: var(--color-white);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-medium);
+  padding: 24px 16px;
+  text-align: center;
+  cursor: pointer;
+  transition: var(--transition);
+  position: relative;
+}
+
+.brand-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(26, 31, 60, 0.1);
+  border-color: var(--color-primary);
+}
+
+.brand-card.active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  box-shadow: 0 4px 15px rgba(26, 31, 60, 0.2);
+}
+
+.brand-icon {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 12px;
+  background: var(--color-dropdown-bg);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 700;
+  color: #64748b;
+  transition: var(--transition);
+}
+
+.brand-card:hover .brand-icon {
+  background: var(--color-primary-light);
+  color: var(--color-white);
+  transform: scale(1.05);
+}
+
+.brand-card.active .brand-icon {
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--color-white);
+}
+
+.brand-name {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--color-text);
+  transition: var(--transition);
+}
+
+.brand-card.active .brand-name {
+  color: var(--color-white);
+}
+
+/* Информация о результатах */
+.results-info {
+  padding: 50px 0 20px;
+  text-align: center;
+}
+
+.results-info h2 {
+  font-size: 32px;
+  color: var(--color-primary);
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.results-info p {
+  color: var(--color-text);
+  font-size: 16px;
+}
+
+/* Сетка устройств */
+.device-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--spacing-gap);
+  width: var(--spacing-container);
+  max-width: var(--spacing-max-width);
+  margin: 40px auto 0;
+}
+
+/* Карточка устройства */
+.device-card {
+  background: var(--color-white);
+  border-radius: var(--radius-medium);
+  padding: 30px 24px;
+  text-align: center;
+  transition: var(--transition);
+  border: 2px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.device-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(26, 31, 60, 0.12);
+  border-color: var(--color-primary);
+}
+
+.device-icon {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 20px;
+  background: var(--color-dropdown-bg);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  font-weight: 700;
+  color: #64748b;
+  transition: var(--transition);
+}
+
+.device-card:hover .device-icon {
+  background: var(--color-primary);
+  color: var(--color-white);
+  transform: scale(1.08);
+}
+
+.device-info {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.device-info h3 {
+  font-size: 20px;
+  color: var(--color-primary);
+  margin-bottom: 10px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.price-tag {
+  color: var(--color-primary);
+  font-weight: 700;
+  font-size: 22px;
+  margin: 12px 0 20px;
+  display: block;
+}
+
+.repair-btn {
+  width: 100%;
+  padding: 12px 24px;
+  border: 2px solid var(--color-border);
+  background: var(--color-dropdown-bg);
+  color: var(--color-text);
+  border-radius: var(--radius-small);
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.repair-btn:hover {
+  background: var(--color-primary);
+  color: var(--color-white);
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+}
+
+.device-card:hover .repair-btn {
+  background: var(--color-primary);
+  color: var(--color-white);
+  border-color: var(--color-primary);
+}
+
+/* Адаптивность */
+@media (max-width: 1200px) {
+  .brand-grid,
+  .device-grid {
+    width: 85%;
+  }
+}
+
+@media (max-width: 768px) {
+  .brand-grid,
+  .device-grid {
+    width: 90%;
+  }
+  
+  .brand-grid {
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 16px;
+  }
+  
+  .brand-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 18px;
+  }
+  
+  .brand-name {
+    font-size: 13px;
+  }
+  
+  .results-info h2 {
+    font-size: 26px;
+  }
+  
+  .device-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .brand-section h2 {
+    font-size: 24px;
+  }
+  
+  .brand-grid,
+  .device-grid {
+    width: 92%;
+  }
+  
+  .brand-grid {
+    grid-template-columns: repeat(auto-fill, minmax(95px, 1fr));
+    gap: 12px;
+  }
+  
+  .brand-card {
+    padding: 16px 12px;
+  }
+  
+  .device-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .device-card {
+    padding: 24px 20px;
+  }
+}
