@@ -1,4 +1,5 @@
 import '../styles/Footer.css';
+import { IconPhone, IconLaptop, IconCheck } from '../assets/Icons';
 
 export default function Footer() {
   const icons = {

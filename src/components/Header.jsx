@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom"; // Добавили Link
+import { Link } from "react-router-dom";
+import Cart from './Cart';
 import "../styles/Header.css";
 
 export default function Header() {
   const [langOpen, setLangOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [currentLang, setCurrentLang] = useState("EN");
+  const [cartOpen, setCartOpen] = useState(false);
   const dropdownRef = useRef(null);
 
   // Список брендов для удобного управления (админки)
@@ -152,10 +154,6 @@ export default function Header() {
               {icons.user}
               <span>Account</span>
             </a>
-            <a href="#" className="icon-link">
-              {icons.cart}
-              <span>Cart</span>
-            </a>
 
             <button
               className="mobile-menu-btn"
@@ -174,7 +172,6 @@ export default function Header() {
       )}
       <div className={`header-bottom ${mobileMenuOpen ? "mobile-open" : ""}`}>
         <div className="container">
-          {/* ОБНОВЛЕННАЯ СЕКЦИЯ БРЕНДОВ */}
           <div className="nav-section categories">
             {brandMenu.map((cat) => (
               <Link

@@ -30,23 +30,19 @@ export default function Categories() {
     { name: 'Blackview', icon: 'BV' },
   ];
 
-  // Обновляем activeBrand при загрузке или изменении URL
   useEffect(() => {
     if (brand) {
-      // Делаем первую букву заглавной
       const formattedBrand = brand.charAt(0).toUpperCase() + brand.slice(1).toLowerCase();
       setActiveBrand(formattedBrand);
     }
   }, [brand]);
 
-  // Функция для изменения бренда и перехода на страницу товаров
   const handleBrandChange = (brandName) => {
   navigate(`/categories/${brandName.toLowerCase()}`);
 };
 
   return (
     <div className="categories-page">
-      {/* Секция брендов */}
       <div className="brand-section">
         <h2>Wybierz markę urządzenia</h2>
         <div className="brand-grid">
