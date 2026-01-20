@@ -1,0 +1,258 @@
+.models-page {
+  width: var(--spacing-container);
+  max-width: var(--spacing-max-width);
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+.models-header {
+  margin-bottom: 40px;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  color: var(--color-primary);
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 8px 0;
+  margin-bottom: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s;
+}
+
+.back-btn:hover {
+  gap: 12px;
+  color: var(--color-primary-dark, #0051a8);
+}
+
+.models-header h1 {
+  font-size: 36px;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  color: #1a1a1a;
+}
+
+.models-header p {
+  font-size: 16px;
+  color: #666;
+  margin: 0 0 24px 0;
+}
+
+/* Поиск */
+.search-box {
+  position: relative;
+  max-width: 500px;
+  margin-top: 24px;
+}
+
+.search-box svg {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999;
+  pointer-events: none;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 14px 16px 14px 48px;
+  border: 2px solid #e5e5e5;
+  border-radius: 12px;
+  font-size: 15px;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.search-box input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 4px rgba(0, 102, 204, 0.1);
+}
+
+/* Контент */
+.models-content {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.model-series {
+  animation: fadeInUp 0.4s ease;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.series-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 16px 0;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+/* Сетка моделей */
+.models-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 1200px) {
+  .models-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .models-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.model-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  background: white;
+  border: 2px solid #f0f0f0;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.model-card:hover {
+  border-color: var(--color-primary);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+.model-icon {
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, var(--color-primary) 0%, #0051a8 100%);
+  color: white;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.model-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.model-info h4 {
+  margin: 0 0 4px 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a1a1a;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.model-year {
+  font-size: 13px;
+  color: #999;
+}
+
+.model-arrow {
+  font-size: 20px;
+  color: var(--color-primary);
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.2s;
+}
+
+.model-card:hover .model-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Нет моделей */
+.no-models {
+  text-align: center;
+  padding: 80px 20px;
+  color: #999;
+}
+
+.no-models p {
+  font-size: 16px;
+  margin: 0;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .models-page {
+    width: 90%;
+    padding: 24px 0;
+  }
+
+  .models-header h1 {
+    font-size: 28px;
+  }
+
+  .models-header p {
+    font-size: 14px;
+  }
+
+  .search-box {
+    max-width: 100%;
+  }
+
+  .models-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .model-card {
+    padding: 16px;
+  }
+
+  .model-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 12px;
+  }
+
+  .model-info h4 {
+    font-size: 15px;
+  }
+
+  .series-title {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .models-header h1 {
+    font-size: 24px;
+  }
+
+  .back-btn {
+    font-size: 14px;
+  }
+
+  .models-grid {
+    grid-template-columns: 1fr;
+  }
+}

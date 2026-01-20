@@ -5,6 +5,7 @@ import Hero from "./components/Hero";
 import Cart from "./components/Cart";
 import Footer from "./components/Footer";
 import Categories from "./pages/Categories";
+import Models from "./pages/Models";
 import Products from "./pages/Products";
 
 function App() {
@@ -15,21 +16,26 @@ function App() {
     <BrowserRouter>
       {/* Хедер будет виден на всех страницах */}
       <Header />
-
+      
       <main>
         <Routes>
+          {/* Главная страница */}
           <Route path="/" element={<Hero />} />
-
+          
           {/* Группа маршрутов для категорий */}
           <Route path="/categories">
-            <Route index element={<Categories />} />{" "}
-            {/* Это сработает на /categories */}
-            <Route path=":brand" element={<Products />} />{" "}
-            {/* Это на /categories/apple */}
+            {/* Выбор бренда - /categories */}
+            <Route index element={<Categories />} />
+            
+            {/* Выбор модели - /categories/apple/models */}
+            <Route path=":brand/models" element={<Models />} />
+            
+            {/* Товары для модели - /categories/apple/model/1/products */}
+            <Route path=":brand/model/:modelId/products" element={<Products />} />
           </Route>
         </Routes>
       </main>
-
+      
       {/* Передаём управление открыт/закрыт через onToggle */}
       <Cart isOpen={cartOpen} onToggle={() => setCartOpen((v) => !v)} />
       

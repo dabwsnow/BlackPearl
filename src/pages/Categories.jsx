@@ -38,8 +38,9 @@ export default function Categories() {
   }, [brand]);
 
   const handleBrandChange = (brandName) => {
-  navigate(`/categories/${brandName.toLowerCase()}`);
-};
+    // Переход на страницу выбора модели вместо Products
+    navigate(`/categories/${brandName.toLowerCase()}/models`);
+  };
 
   return (
     <div className="categories-page">

@@ -176,7 +176,7 @@ export default function Header() {
             {brandMenu.map((cat) => (
               <Link
                 key={cat}
-                to={`/categories/${cat.toLowerCase()}`}
+                to={`/categories/${cat.toLowerCase()}/models`}
                 className="nav-link"
                 onClick={() => setMobileMenuOpen(false)}
               >
