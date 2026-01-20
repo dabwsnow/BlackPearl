@@ -58,6 +58,8 @@
   transform: translateY(10px);
   transition: all 0.2s;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .floating-cart.expanded .cart-content {
@@ -294,32 +296,198 @@
 /* Адаптивность */
 @media (max-width: 768px) {
   .floating-cart {
-    bottom: 16px;
-    right: 16px;
+    bottom: 20px;
+    right: 20px;
   }
 
   .cart-content {
-    width: calc(100vw - 32px);
-    max-width: 360px;
+    width: calc(100vw - 40px);
+    max-width: 400px;
+    max-height: 70vh;
+  }
+
+  .cart-items-list {
+    max-height: calc(70vh - 200px);
   }
 }
 
 @media (max-width: 480px) {
+  /* Фиксированная кнопка корзины */
+  .floating-cart {
+    bottom: 20px;
+    right: 20px;
+  }
+
   .cart-toggle-btn {
-    padding: 12px 16px;
+    padding: 16px 20px;
+    gap: 10px;
+    border-radius: 28px;
+    font-size: 15px;
   }
 
-  .cart-label {
-    display: none;
+  .cart-toggle-btn svg {
+    width: 22px;
+    height: 22px;
   }
 
+  .cart-badge {
+    top: -6px;
+    right: -6px;
+    font-size: 11px;
+    padding: 3px 7px;
+    min-width: 20px;
+  }
+
+  /* Полноэкранная корзина на мобильных */
   .cart-content {
-    right: auto;
-    left: 50%;
-    transform: translateX(-50%) translateY(10px);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-width: 100%;
+    max-height: 80vh;
+    border-radius: 20px 20px 0 0;
+    box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.2);
+    transform: translateY(100%);
+    display: flex;
+    flex-direction: column;
   }
 
   .floating-cart.expanded .cart-content {
-    transform: translateX(-50%) translateY(0);
+    transform: translateY(0);
+  }
+
+  /* Header */
+  .cart-header {
+    padding: 20px 20px 16px;
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .cart-header::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 2px;
+  }
+
+  .cart-header h3 {
+    font-size: 17px;
+    margin-top: 8px;
+  }
+
+  .items-count {
+    font-size: 13px;
+  }
+
+  /* Список товаров */
+  .cart-items-list {
+    max-height: calc(80vh - 180px);
+    overflow-y: auto;
+    padding: 12px;
+    flex: 1;
+  }
+
+  .cart-mini-item {
+    padding: 12px;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+
+  .item-image {
+    width: 60px;
+    height: 60px;
+  }
+
+  .item-info h4 {
+    font-size: 14px;
+  }
+
+  .item-color {
+    font-size: 12px;
+  }
+
+  .item-price {
+    font-size: 15px;
+  }
+
+  .item-quantity {
+    gap: 8px;
+    padding: 4px 8px;
+  }
+
+  .qty-mini-btn {
+    width: 24px;
+    height: 24px;
+    font-size: 14px;
+  }
+
+  .item-quantity span {
+    min-width: 18px;
+    font-size: 13px;
+  }
+
+  .item-remove {
+    width: 24px;
+    height: 24px;
+    font-size: 16px;
+  }
+
+  /* Footer */
+  .cart-footer {
+    padding: 14px 20px 20px;
+    background: white;
+    flex-shrink: 0;
+  }
+
+  .cart-total {
+    font-size: 15px;
+    margin-bottom: 12px;
+  }
+
+  .total-price {
+    font-size: 20px;
+  }
+
+  .checkout-mini-btn {
+    padding: 14px;
+    font-size: 15px;
+    border-radius: 10px;
+  }
+
+  /* Пустая корзина */
+  .cart-empty {
+    padding: 60px 20px;
+  }
+
+  .cart-empty svg {
+    width: 48px;
+    height: 48px;
+  }
+
+  .cart-empty p {
+    font-size: 14px;
+  }
+}
+
+/* Очень маленькие экраны */
+@media (max-width: 360px) {
+  .floating-cart {
+    bottom: 16px;
+    right: 16px;
+  }
+
+  .cart-toggle-btn {
+    padding: 14px 18px;
+  }
+
+  .cart-label {
+    font-size: 14px;
   }
 }
