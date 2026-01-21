@@ -7,6 +7,8 @@ import Footer from "./components/Footer";
 import Categories from "./pages/Categories";
 import Models from "./pages/Models";
 import Products from "./pages/Products";
+import ProductDetail from "./pages/ProductDetail";
+import Checkout from "./pages/Checkout";
 
 function App() {
   // state to control cart visibility
@@ -32,7 +34,13 @@ function App() {
             
             {/* Товары для модели - /categories/apple/model/1/products */}
             <Route path=":brand/model/:modelId/products" element={<Products />} />
+            
+            {/* Страница товара - /categories/apple/model/1/product/5 */}
+            <Route path=":brand/model/:modelId/product/:productId" element={<ProductDetail />} />
           </Route>
+
+          {/* Страница оформления заказа */}
+          <Route path="/checkout" element={<Checkout />} />
         </Routes>
       </main>
       

@@ -158,24 +158,43 @@ export default function Products() {
       {/* Товары */}
       <div className="products-grid">
         {filteredProducts.map(product => (
-          <div key={product.id} className="product-card">
+          <div 
+            key={product.id} 
+            className="product-card"
+            onClick={() => navigate(`/categories/${brand}/model/${modelId}/product/${product.id}`)}
+            style={{ cursor: 'pointer' }}
+          >
+            {/* Бейдж категории */}
+            <div className="product-badge">
+              {categories.find(c => c.id === product.category)?.icon} {categories.find(c => c.id === product.category)?.name}
+            </div>
+            
+            {/* Изображение */}
             <div className="product-image-wrapper">
               <img src={product.image} alt={product.name} className="product-image" />
-              {!product.inStock && <span className="out-of-stock-badge">Brak w magazynie</span>}
             </div>
+
+            {/* Информация */}
             <div className="product-details">
-              <h3>{product.name}</h3>
+              <div className="product-price">{product.price} zł</div>
+              <h3 className="product-name">{product.name}</h3>
               <p className="product-description">{product.description}</p>
-              <div className="product-footer">
-                <span className="product-price">{product.price} zł</span>
-                <button 
-                  className="add-to-cart-btn"
-                  disabled={!product.inStock}
-                >
-                  {product.inStock ? 'Dodaj do koszyka' : 'Niedostępny'}
-                </button>
-              </div>
+              
+              {/* Кнопка */}
+              <button 
+                className="add-to-cart-btn"
+                disabled={!product.inStock}
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <circle cx="9" cy="21" r="1" />
+                  <circle cx="20" cy="21" r="1" />
+                  <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+                </svg>
+                {product.inStock ? 'Dodaj do koszyka' : 'Niedostępny'}
+              </button>
             </div>
+
+            {!product.inStock && <div className="out-of-stock-overlay">Brak w magazynie</div>}
           </div>
         ))}
       </div>
