@@ -64,12 +64,10 @@ export default function Models() {
 
   const models = modelsData[brand?.toLowerCase()] || [];
 
-  // Фильтрация по поиску
   const filteredModels = models.filter(model =>
     model.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  // Группировка по сериям
   const groupedModels = filteredModels.reduce((acc, model) => {
     if (!acc[model.series]) {
       acc[model.series] = [];

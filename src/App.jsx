@@ -9,6 +9,8 @@ import Models from "./pages/Models";
 import Products from "./pages/Products";
 import ProductDetail from "./pages/ProductDetail";
 import Checkout from "./pages/Checkout";
+import Account from "./pages/Account";
+import AdminDashboard from "./pages/AdminDashboard";
 
 function App() {
   // state to control cart visibility
@@ -16,39 +18,34 @@ function App() {
 
   return (
     <BrowserRouter>
-      {/* Хедер будет виден на всех страницах */}
-      <Header />
-      
-      <main>
-        <Routes>
-          {/* Главная страница */}
-          <Route path="/" element={<Hero />} />
-          
-          {/* Группа маршрутов для категорий */}
-          <Route path="/categories">
-            {/* Выбор бренда - /categories */}
-            <Route index element={<Categories />} />
-            
-            {/* Выбор модели - /categories/apple/models */}
-            <Route path=":brand/models" element={<Models />} />
-            
-            {/* Товары для модели - /categories/apple/model/1/products */}
-            <Route path=":brand/model/:modelId/products" element={<Products />} />
-            
-            {/* Страница товара - /categories/apple/model/1/product/5 */}
-            <Route path=":brand/model/:modelId/product/:productId" element={<ProductDetail />} />
-          </Route>
+      <Routes>
+        {/* Админ-панель БЕЗ хедера и футера */}
+        <Route path="/admin" element={<AdminDashboard />} />
 
-          {/* Страница оформления заказа */}
-          <Route path="/checkout" element={<Checkout />} />
-        </Routes>
-      </main>
-      
-      {/* Передаём управление открыт/закрыт через onToggle */}
-      <Cart isOpen={cartOpen} onToggle={() => setCartOpen((v) => !v)} />
-      
-      {/* Футер также будет виден всегда */}
-      <Footer />
+        {/* Остальные страницы С хедером и футером */}
+        <Route path="*" element={
+          <>
+            <Header />
+            <main>
+              <Routes>
+                <Route path="/" element={<Hero />} />
+                
+                <Route path="/categories">
+                  <Route index element={<Categories />} />
+                  <Route path=":brand/models" element={<Models />} />
+                  <Route path=":brand/model/:modelId/products" element={<Products />} />
+                  <Route path=":brand/model/:modelId/product/:productId" element={<ProductDetail />} />
+                </Route>
+
+                <Route path="/checkout" element={<Checkout />} />
+                <Route path="/account" element={<Account />} />
+              </Routes>
+            </main>
+            <Cart isOpen={cartOpen} onToggle={() => setCartOpen((v) => !v)} />
+            <Footer />
+          </>
+        } />
+      </Routes>
     </BrowserRouter>
   );
 }
